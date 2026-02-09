@@ -1,3 +1,191 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>¿Quieres ser mi San Valentín?</title>
+
+<style>
+body{
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(135deg,#fff0f6,#ffffff);
+  font-family:system-ui;
+}
+
+.card{
+  position:relative;
+  width:900px;
+  max-width:100%;
+  background:white;
+  border-radius:28px;
+  padding:28px;
+  box-shadow:0 18px 50px rgba(0,0,0,.15);
+  overflow:hidden;
+}
+
+/* FLORES EN ESQUINAS */
+.flower{
+  position:absolute;
+  width:90px;
+  opacity:.9;
+}
+.flower.tl{ top:-20px; left:-20px; }
+.flower.tr{ top:-20px; right:-20px; }
+.flower.bl{ bottom:-20px; left:-20px; }
+.flower.br{ bottom:-20px; right:-20px; }
+
+/* LAYOUT */
+.content{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:20px;
+  align-items:center;
+}
+
+@media(max-width:820px){
+  .content{ grid-template-columns:1fr; }
+}
+
+h1{
+  font-size:36px;
+  margin:0;
+}
+.subtitle{
+  color:#555;
+  margin-bottom:16px;
+}
+
+.text{
+  font-size:18px;
+  line-height:1.6;
+  margin-bottom:18px;
+}
+
+/* BOTONES SI / NO */
+.actions{
+  display:flex;
+  gap:12px;
+  margin-bottom:18px;
+}
+button{
+  padding:12px 18px;
+  border-radius:14px;
+  border:none;
+  font-weight:700;
+  cursor:pointer;
+}
+.yes{
+  background:#ff4d7d;
+  color:white;
+}
+.no{
+  background:#eee;
+}
+
+/* OPCIONES */
+.options{
+  display:none;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:12px;
+}
+.option{
+  padding:10px 14px;
+  border-radius:999px;
+  border:1px solid #ddd;
+  background:#f9f9f9;
+  cursor:pointer;
+  transition:.2s;
+}
+.option.active{
+  background:#ff4d7d;
+  color:white;
+  border-color:#ff4d7d;
+}
+
+.confirm{
+  display:none;
+  margin-top:14px;
+  background:#2f8f5b;
+  color:white;
+}
+
+/* TOTORO */
+.totoro{
+  width:260px;
+  display:block;
+  margin:auto;
+}
+
+/* CORAZONES ABAJO */
+.hearts{
+  width:100%;
+  margin-top:18px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+  <!-- FLORES -->
+  <img src="flores1.png" class="flower tl">
+  <img src="flores1.png" class="flower tr">
+  <img src="flores1.png" class="flower bl">
+  <img src="flores1.png" class="flower br">
+
+  <div class="content">
+
+    <!-- TEXTO -->
+    <div>
+      <h1>¿Quieres ser mi San Valentín? 💖</h1>
+      <p class="subtitle">
+        Una tarjetita con corazón, flores y un “espíritu del bosque” estilo Totoro.
+      </p>
+
+      <p class="text">
+        Hoy quiero preguntarte algo simple, pero con todo mi cariño:<br>
+        <b>¿te animas a ser mi San Valentín?</b><br><br>
+        Prometo risas, algo rico de comer, y un plan bonito (aunque sea sencillo).
+      </p>
+
+      <!-- BOTONES PRINCIPALES -->
+      <div class="actions">
+        <button class="yes" id="btnYes">Sí 💘</button>
+        <button class="no" id="btnNo">Déjame pensarlo 🙈</button>
+      </div>
+
+      <!-- OPCIONES -->
+      <p id="question" style="display:none;"><b>¿Qué te gustaría ese día?</b></p>
+      <div class="options" id="options">
+        <div class="option">🎬 Película</div>
+        <div class="option">📺 Ver anime</div>
+        <div class="option">🌄 Aventura</div>
+        <div class="option">☕ Desayuno</div>
+        <div class="option">🍽️ Almuerzo</div>
+        <div class="option">💆 Masaje</div>
+      </div>
+
+      <button class="confirm" id="confirmBtn">Enviar mi elección 💖</button>
+    </div>
+
+    <!-- TOTORO -->
+    <div>
+      <img src="totoro1.png" class="totoro">
+    </div>
+
+  </div>
+
+  <!-- CORAZONES -->
+  <img src="corazon2.png" class="hearts">
+
+</div>
+
 <script>
 const btnYes = document.getElementById("btnYes");
 const btnNo = document.getElementById("btnNo");
@@ -35,9 +223,12 @@ confirmBtn.onclick = () => {
     "💖 Mi elección para San Valentín 💖\n\n" +
     selected.join("\n");
 
-  const telefono = "593996123542"; // TU número
+  const telefono = "593996123542"; // TU número WhatsApp
   const url = "https://wa.me/" + telefono + "?text=" + encodeURIComponent(mensaje);
 
   window.open(url, "_blank");
 };
 </script>
+
+</body>
+</html>
